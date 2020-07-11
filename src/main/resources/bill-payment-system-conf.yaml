@@ -1,0 +1,5 @@
+database:
+  driverClass: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/setu-bill-payment
+  user: postgres
+  password: 12345
