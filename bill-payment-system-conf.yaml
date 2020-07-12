@@ -5,6 +5,7 @@ database:
   password: 8279c289d49d2457aa827f9e9eab6d01f711c33e1395f46f81b14412ec0fe366
 
 server:
-  applicationConnectors:
-    - type: https
-      port: 8080
+  type: simple
+  connector:
+    type: http
+    port: 8080
