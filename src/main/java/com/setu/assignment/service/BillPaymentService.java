@@ -1,8 +1,11 @@
 package com.setu.assignment.service;
 
 import com.setu.assignment.dao.BillPaymentDao;
+import com.setu.assignment.exception.InvalidApiParameters;
 import com.setu.assignment.model.BillData;
 import com.setu.assignment.model.PaymentUpdateRequest;
+import com.setu.assignment.util.Constants;
+import org.apache.commons.lang3.StringUtils;
 import org.skife.jdbi.v2.sqlobject.CreateSqlObject;
 
 public abstract class BillPaymentService {
@@ -14,11 +17,12 @@ public abstract class BillPaymentService {
     }
 
     public String updatePayment(PaymentUpdateRequest request) {
+        PaymentUpdateRequest.Transaction transaction = request.getTransaction();
         return billPaymentDao().updatePayment(
                 request.getRefID(),
-                request.getTransaction().getId(),
-                request.getTransaction().getAmountPaid(),
-                request.getTransaction().getDate()
+                transaction.getId(),
+                transaction.getAmountPaid(),
+                transaction.getDate()
         );
     }
 }
