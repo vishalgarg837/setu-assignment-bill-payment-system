@@ -16,6 +16,8 @@ public class NotFoundResponseFilter implements ContainerResponseFilter {
         if (responseContext.getStatus() == Response.Status.NOT_FOUND.getStatusCode()
                 && responseContext.getEntity() instanceof ErrorMessage) {
             responseContext.setEntity(new ErrorResponse(StatusCodes.ERROR, Constants.PATH_NOT_FOUND).toString());
+        } else if (responseContext.getStatus() == Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()) {
+            responseContext.setEntity(new ErrorResponse(StatusCodes.ERROR, Constants.UNHANDLED_ERROR).toString());
         }
     }
 }
