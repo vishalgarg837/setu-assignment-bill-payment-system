@@ -23,15 +23,15 @@ public class PaymentUpdateRequest {
     }
 
     public static class Transaction {
-        private Integer amountPaid;
+        private String amountPaid;
         private Date date;
         private String id;
 
-        public Integer getAmountPaid() {
+        public String getAmountPaid() {
             return amountPaid;
         }
 
-        public void setAmountPaid(Integer amountPaid) {
+        public void setAmountPaid(String amountPaid) {
             this.amountPaid = amountPaid;
         }
 
