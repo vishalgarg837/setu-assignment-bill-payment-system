@@ -25,13 +25,13 @@ public interface BillPaymentDao {
     BillData checkIfBillIsValid(@Bind("refId") String refId);
 
     @SqlUpdate("update bill set due_amount = 0 where ref_id = :refId and due_amount = :amount")
-    void updateBill(@Bind("refId") String refId, @Bind("amount") Integer amount);
+    void updateBill(@Bind("refId") String refId, @Bind("amount") String amount);
 
     @SqlUpdate("insert into transactions(ref_id, transaction_id, ack_id, transaction_date) values (:refId, :id, :ackId, :date)")
     void updateTransaction(@Bind("refId") String refId, @Bind("id") String id, @Bind("ackId") String ackId, @Bind("date") Date date);
 
     @Transaction
-    default String updatePayment(String refId, String id, Integer amountToBePaid, Date date) {
+    default String updatePayment(String refId, String id, String amountToBePaid, Date date) {
         TransactionData transaction = checkIfTransactionIsDuplicate(refId);
 
         if (transaction != null) {
