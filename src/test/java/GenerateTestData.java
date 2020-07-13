@@ -36,7 +36,7 @@ public class GenerateTestData {
                     "name varchar(256)," +
                     "mobile_number varchar(256)," +
                     "due_date Date," +
-                    "due_amount int4" +
+                    "due_amount VARCHAR" +
                     ")";
             stmt.executeUpdate(sql);
             sql = "create table transactions (" +
