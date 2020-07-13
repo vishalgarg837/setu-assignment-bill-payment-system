@@ -1,6 +1,10 @@
 package com.setu.assignment.exception;
 
 public class InvalidApiParameters extends BillPaymentException {
+    public InvalidApiParameters(String message) {
+        super(message);
+    }
+
     public InvalidApiParameters(int code) {
         super(code);
     }
